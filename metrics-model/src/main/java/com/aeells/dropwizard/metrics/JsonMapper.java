@@ -16,8 +16,9 @@ public final class JsonMapper
 {
     public static void main(final String[] args) throws IOException
     {
-        final Metrics metrics = new ObjectMapper().readValue(Resources.getResource("metrics.json"), Metrics.class);
+        final Metrics metrics = new ObjectMapper().readValue(Resources.getResource("metrics.json"), Metrics.Builder.class).build();
 
+        System.out.println("*** version: " + metrics.getVersion());
         System.out.println("*** gauges: ");
         for (final Map.Entry<String, Gauge> entry : metrics.getGauges().entrySet())
         {
