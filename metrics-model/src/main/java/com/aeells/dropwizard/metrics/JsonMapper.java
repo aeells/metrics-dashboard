@@ -1,12 +1,12 @@
 package com.aeells.dropwizard.metrics;
 
+import com.aeells.dropwizard.metrics.mapper.MetricsMapper;
 import com.aeells.dropwizard.metrics.model.Counter;
 import com.aeells.dropwizard.metrics.model.Gauge;
 import com.aeells.dropwizard.metrics.model.Histogram;
 import com.aeells.dropwizard.metrics.model.Meter;
 import com.aeells.dropwizard.metrics.model.Metrics;
 import com.aeells.dropwizard.metrics.model.Timer;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.io.Resources;
 
 import java.io.IOException;
@@ -16,7 +16,7 @@ public final class JsonMapper
 {
     public static void main(final String[] args) throws IOException
     {
-        final Metrics metrics = new ObjectMapper().readValue(Resources.getResource("metrics.json"), Metrics.Builder.class).build();
+        final Metrics metrics = new MetricsMapper().map(Resources.getResource("example.json"));
 
         System.out.println("*** version: " + metrics.getVersion());
         System.out.println("*** gauges: ");
