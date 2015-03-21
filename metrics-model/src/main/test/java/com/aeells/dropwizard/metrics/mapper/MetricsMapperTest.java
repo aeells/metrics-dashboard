@@ -66,6 +66,6 @@ public final class MetricsMapperTest
         final Metrics metrics = builder
             .build();
 
-        assertThat(new MetricsMapper().map(Resources.getResource("fixtures/metrics.json"))).isEqualTo(metrics);
+        assertThat(new MetricsMapper().map(Resources.getResource("metrics.json"))).isEqualTo(metrics);
     }
 }
